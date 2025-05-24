@@ -61,6 +61,7 @@ const updateExpense = async (req, res) => {
   if (index === -1) {
     return res.status(400).json({ error: "expresnse not fdound" });
   }
+  
 
   if (req.file) {
   const filename = expenses[index].image.split('uploads/')[1]
