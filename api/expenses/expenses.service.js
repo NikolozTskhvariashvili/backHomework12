@@ -62,14 +62,16 @@ const updateExpense = async (req, res) => {
     return res.status(400).json({ error: "expresnse not fdound" });
   }
   
+  const updateReq = {};
 
   if (req.file) {
   const filename = expenses[index].image.split('uploads/')[1]
   const fileId = filename.split('.')[0]
   const pubblicFierld =  `uploads/${fileId}`
   await deleteFromCloduinary(pubblicFierld)
+  if(req.file?.path) updateReq.image = req.file?.path
+
   }
-  const updateReq = {};
 
   if(req.body?.name) updateReq.name = req.body?.name
   if(req.body?.price) updateReq.price = req.body?.price
